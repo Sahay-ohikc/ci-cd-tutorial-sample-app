@@ -6,3 +6,17 @@ steps:
 # Docker Push
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd-notag']
+
+# Deploy container image to Cloud Run
+ - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+   entrypoint: gcloud
+   args:
+   - 'run'
+   - 'deploy'
+   - 'ci-cd-testing-service'
+   - '--image'
+   - 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd-notag'
+   - '--region'
+   - 'us-east1'
+ images:
+ - 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd-notag'
