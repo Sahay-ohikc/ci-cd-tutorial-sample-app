@@ -1,22 +1,24 @@
+substitutions:
+  VERSION: v1.0.3  
 steps:
 # Docker Build
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${TAG_NAME}', '.']
+  args: ['build', '-t', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${VERSION}', '.']
 
 # Docker Push
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${TAG_NAME}']
+  args: ['push', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${VERSION}']
 
 # Deploy container image to Cloud Run
-#- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-#  entrypoint: gcloud
-#  args:
-#  - 'run'
-#  - 'deploy'
-#  - 'ci-cd-testing-service'
-#  - '--image'
-#  - 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${TAG_NAME}'
-#  - '--region'
-#  - 'us-east1'
-#images:
-#- 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${TAG_NAME}'
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+  - 'run'
+  - 'deploy'
+  - 'ci-cd-testing-service'
+  - '--image'
+  - 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${VERSION}'
+  - '--region'
+  - 'us-east1'
+images:
+- 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${VERSION}'
