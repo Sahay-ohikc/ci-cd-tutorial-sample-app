@@ -1,13 +1,13 @@
 substitutions:
-  VERSION: v1.0.3  
+  _VERSION: v1.0.3  
 steps:
 # Docker Build
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${VERSION}', '.']
+  args: ['build', '-t', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${_VERSION}', '.']
 
 # Docker Push
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${VERSION}']
+  args: ['push', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${_VERSION}']
 
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -17,8 +17,8 @@ steps:
   - 'deploy'
   - 'ci-cd-testing-service'
   - '--image'
-  - 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${VERSION}'
+  - 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${_VERSION}'
   - '--region'
   - 'us-east1'
 images:
-- 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${VERSION}'
+- 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${_VERSION}'
