@@ -16,7 +16,7 @@ steps:
   - 'deploy'
   - 'releases'
   - 'create'
-  - 'test-release-${DATE}-${TIME}'
+  - 'test-release-${SHORT_SHA}'
   - '--project'
   - 'sandbox-383520'
   - '--region'
