@@ -16,7 +16,7 @@ steps:
   - 'deploy'
   - 'releases'
   - 'create'
-  - 'test-release-007'
+  - 'test-release-008'
   - '--project'
   - 'sandbox-383520'
   - '--region'
