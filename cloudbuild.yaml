@@ -1,5 +1,5 @@
 substitutions:
-  _VERSION: v1.0.4  
+  _VERSION: v1.0.5  
 steps:
 # Docker Build
 - name: 'gcr.io/cloud-builders/docker'
@@ -9,18 +9,23 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${_VERSION}']
 
-# Deploy container image to Cloud Run
+# Deploy create release
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
   args:
-  - 'run'
   - 'deploy'
-  - 'ci-cd-testing-service'
-  - '--image'
-  - 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${_VERSION}'
+  - 'releases'
+  - 'create'
+  - 'test-release-007'
+  - '--project'
+  - 'sandbox-383520'
   - '--region'
   - 'us-east1'
-  - '--port'
-  - '8000'
+  - '--delivery-pipeline'
+  - 'ci-cd-tutorial-sample-app'
+  - '--images'
+  - 'sample-ci-cd=us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${_VERSION}'
+#  - '--port'
+#  - '8000'
 images:
 - 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${_VERSION}'
