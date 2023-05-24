@@ -1,5 +1,5 @@
 substitutions:
-  _VERSION: v1.0.6 
+  _VERSION: v1.0.8
 steps:
 # Docker Build
 - name: 'gcr.io/cloud-builders/docker'
@@ -16,7 +16,7 @@ steps:
   - 'deploy'
   - 'releases'
   - 'create'
-  - 'test-release-008'
+  - 'test-release-${_VERSION}'
   - '--project'
   - 'sandbox-383520'
   - '--region'
