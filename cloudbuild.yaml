@@ -1,5 +1,5 @@
 substitutions:
-  _VERSION: v1.0.5  
+  _VERSION: v1.0.6 
 steps:
 # Docker Build
 - name: 'gcr.io/cloud-builders/docker'
@@ -29,3 +29,4 @@ steps:
 #  - '8000'
 images:
 - 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${_VERSION}'
+
