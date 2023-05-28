@@ -10,7 +10,7 @@ steps:
 
 - name: python
   entrypoint: '/bin/bash'
-  args: [ '-c', 'source /venv/bin/activate' ]
+  args: [ '-c', 'source ./venv/bin/activate' ]
 
 - name: python
   entrypoint: python
