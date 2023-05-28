@@ -1,13 +1,10 @@
-substitutions:
-  _VERSION: v1.0.8
-steps:
 # Docker Build
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${_VERSION}', '.']
+  args: ['build', '-t', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${TAG_NAME}', '.']
 
 # Docker Push
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${_VERSION}']
+  args: ['push', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${TAG_NAME}']
 
 # Deploy create release
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
@@ -16,7 +13,7 @@ steps:
   - 'deploy'
   - 'releases'
   - 'create'
-  - 'test-release-${SHORT_SHA}'
+  - 'test-release-${TAG_NAME}'
   - '--project'
   - 'sandbox-383520'
   - '--region'
@@ -24,9 +21,8 @@ steps:
   - '--delivery-pipeline'
   - 'ci-cd-tutorial-sample-app'
   - '--images'
-  - 'sample-ci-cd=us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${_VERSION}'
+  - 'sample-ci-cd=us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${TAG_NAME}'
 #  - '--port'
 #  - '8000'
 images:
-- 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${_VERSION}'
-
+- 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${TAG_NAME}'
