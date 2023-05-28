@@ -1,20 +1,27 @@
 steps:
 #requirements
+#- name: python
+#  entrypoint: python
+#  args: ['-m', 'venv', 'venv']
+#
+#- name: python
+#  entrypoint: '/bin/bash'
+#  args: [ '-c', 'source /venv/bin/activate' ]
 - name: python
-  entrypoint: python
-  args: ['-m', 'venv', 'venv']
+  entrypoint: '/bin/bash'
+  args: [ '-c', 'conda env create -n ci-cd-tutorial-sample-app python=3.8' ]  
 
 - name: python
   entrypoint: '/bin/bash'
-  args: [ '-c', 'source /venv/bin/activate' ]
+  args: [ '-c', 'source activate ci-cd-tutorial-sample-app' ]  
 
 - name: python
   entrypoint: python
-  args: ['-m', 'pip', 'install', '--upgrade', 'pip']     
-  
+  args: ['-m', 'pip', 'install', '-r', 'requirements.txt']
+
 - name: python
   entrypoint: python
-  args: ['-m', 'pip', 'install', '--no-cache-dir', '-r', 'requirements.txt']
+  args: ['-m', 'pip', 'install', '-r', 'requirements-server.txt']
 
 #unittest
 - name: python
