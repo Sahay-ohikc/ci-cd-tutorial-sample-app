@@ -1,19 +1,16 @@
 steps:
 #requirements
-#- name: python
-#  entrypoint: python
-#  args: ['-m', 'venv', 'venv']
-#
-#- name: python
-#  entrypoint: '/bin/bash'
-#  args: [ '-c', 'source /venv/bin/activate' ]
 - name: python
-  entrypoint: '/bin/bash'
-  args: [ '-c', 'conda env create -n ci-cd-tutorial-sample-app python=3.8' ]  
+  entrypoint: python
+  args: ['-m', 'pip', 'install', '--user', 'virtualenv']
+
+- name: python
+  entrypoint: python
+  args: ['-m', 'venv', 'venv']
 
 - name: python
   entrypoint: '/bin/bash'
-  args: [ '-c', 'source activate ci-cd-tutorial-sample-app' ]  
+  args: [ '-c', 'source /venv/bin/activate' ]
 
 - name: python
   entrypoint: python
