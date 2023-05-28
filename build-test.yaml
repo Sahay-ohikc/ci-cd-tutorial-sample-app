@@ -2,11 +2,19 @@ steps:
 #requirements
 - name: python
   entrypoint: python
-  args: ["-m", "pip", "install", "--upgrade", "pip"]     
+  args: ['-m', 'venv', 'venv']
+
+- name: python
+  entrypoint: '/bin/bash'
+  args: [ '-c', 'source /venv/bin/activate' ]
+
+- name: python
+  entrypoint: python
+  args: ['-m', 'pip', 'install', '--upgrade', 'pip']     
   
 - name: python
   entrypoint: python
-  args: ["-m", "pip", "install", "--no-cache-dir", "-r", "requirements.txt"]
+  args: ['-m', 'pip', 'install', '--no-cache-dir', '-r', 'requirements.txt']
 
 #unittest
 - name: python
