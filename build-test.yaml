@@ -2,7 +2,7 @@ steps:
 #requirements
 - name: python
   entrypoint: python
-  args: ['-m', 'pip', 'install', '--user', 'virtualenv']
+  args: ['-m', 'pip', 'install', 'virtualenv']
 
 - name: python
   entrypoint: python
