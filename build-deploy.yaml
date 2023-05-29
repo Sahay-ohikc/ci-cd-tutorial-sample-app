@@ -14,7 +14,7 @@ steps:
   - 'deploy'
   - 'releases'
   - 'create'
-  - 'test-release-${TAG_NAME}'
+  - 'test-release-${SHORT_SHA}'
   - '--project'
   - 'sandbox-383520'
   - '--region'
