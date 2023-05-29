@@ -14,7 +14,7 @@ steps:
 
 - name: python
   entrypoint: '/bin/bash'
-  args: ['-c', 'pip -m install -r requirements.txt']
+  args: ['-c', 'pip install -r requirements.txt']
 
 #unittest
 - name: python
