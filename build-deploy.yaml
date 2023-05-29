@@ -1,3 +1,4 @@
+steps:
 # Docker Build
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${TAG_NAME}', '.']
