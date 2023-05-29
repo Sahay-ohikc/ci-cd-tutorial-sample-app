@@ -10,16 +10,7 @@ steps:
 
 - name: python
   entrypoint: '/bin/bash'
-  args: [ '-c', 'source ./venv/bin/activate' ]
-
-- name: python
-  entrypoint: '/bin/bash'
-  args: ['-c', 'pip install -r requirements.txt']
-
-#unittest
-- name: python
-  entrypoint: '/bin/bash'
-  args: ['-c', 'python3 -m unittest discover'] 
+  args: [ '-c', 'source ./venv/bin/activate; pip install -r requirements.txt; python3 -m unittest discover' ]
 
 # Docker Build
 - name: 'gcr.io/cloud-builders/docker'
