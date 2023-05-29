@@ -1,8 +1,8 @@
 steps:
 #requirements
-#- name: python
-#  entrypoint: python
-#  args: ['-m', 'pip', 'install', 'virtualenv']
+- name: python
+  entrypoint: '/bin/bash'
+  args: ['-c', 'apt install python3-venv']
 
 - name: python
   entrypoint: '/bin/bash'
