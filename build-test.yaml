@@ -1,16 +1,16 @@
 steps:
 #requirements
-- name: python
-  entrypoint: python
-  args: ['-m', 'pip', 'install', 'virtualenv']
-
-- name: python
-  entrypoint: python
-  args: ['-m', 'venv', 'venv']
+#- name: python
+#  entrypoint: python
+#  args: ['-m', 'pip', 'install', 'virtualenv']
 
 - name: python
   entrypoint: '/bin/bash'
-  args: [ '-c', 'source ./venv/bin/activate' ]
+  args: ['-c', 'python3 -m venv venv']
+
+- name: python
+  entrypoint: '/bin/bash'
+  args: [ '-c', 'source /venv/bin/activate' ]
 
 - name: python
   entrypoint: python
@@ -22,8 +22,8 @@ steps:
 
 #unittest
 - name: python
-  entrypoint: python
-  args: ['-m', 'unittest', 'discover'] 
+  entrypoint: '/bin/bash'
+  args: ['-c', 'python3 -m unittest discover'] 
 
 # Docker Build
 - name: 'gcr.io/cloud-builders/docker'

@@ -13,10 +13,11 @@ from app.models import Menu
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 TEST_DB = os.path.join(BASE_DIR, 'test.db')
 
-
 class BasicTests(unittest.TestCase):
 
     def setUp(self):
+        self.app_context = app.app_context()
+        self.app_context.push()
         app.config['SQLALCHEMY_DATABASE_URI'] = \
             os.environ.get('TEST_DATABASE_URL') or \
             'sqlite:///' + TEST_DB
@@ -25,6 +26,7 @@ class BasicTests(unittest.TestCase):
         db.create_all()
 
     def tearDown(self):
+        self.app_context.pop()
         pass
 
     def test_home(self):
