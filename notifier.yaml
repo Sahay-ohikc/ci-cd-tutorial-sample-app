@@ -1,0 +1,26 @@
+#https://cloud.google.com/build/docs/configuring-notifications/configure-smtp
+apiVersion: cloud-build-notifiers/v1
+kind: SMTPNotifier
+metadata:
+  name: mybuild-smtp-notifier
+spec:
+  notification:
+    filter: build.build_trigger_id in ["841f4cc9-772d-4dc3-b783-86258e3bd9d8","d6a356de-0fd0-40d1-ab75-dec343627db8"]
+    params:
+      buildStatus: $(build.status)
+    delivery:
+      server: smtp.gmail.com
+      port: "587"
+      sender: sahay.ohikc@gmail.com
+      from: sahay.ohikc@gmail.com
+      recipients:
+        - sahay@mailinator.com
+        # optional: more emails here
+      password:
+        secretRef: gmail-sahay-ohikc
+    template:
+      type: golang
+      uri: gs://uklspstoragedd02/smtp.html
+  secrets:
+  - name: gmail-sahay-ohikc
+    value: projects/1086024864123/secrets/gmail-sahay-ohikc/versions/latest
