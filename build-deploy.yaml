@@ -1,3 +1,4 @@
+steps:
 # Docker Build
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'us-docker.pkg.dev/${PROJECT_ID}/us.gcr.io/sample-ci-cd:${TAG_NAME}', '.']
@@ -13,7 +14,7 @@
   - 'deploy'
   - 'releases'
   - 'create'
-  - 'test-release-${TAG_NAME}'
+  - 'test-release-${SHORT_SHA}'
   - '--project'
   - 'sandbox-383520'
   - '--region'
