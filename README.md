@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/edonosotti/ci-cd-tutorial-sample-app.svg?branch=master)](https://travis-ci.org/edonosotti/ci-cd-tutorial-sample-app)
 [![codebeat badge](https://codebeat.co/badges/0e006c74-a2f9-4f34-9cf4-2378fb7d995a)](https://codebeat.co/projects/github-com-edonosotti-ci-cd-tutorial-sample-app-master)
 [![Maintainability](https://api.codeclimate.com/v1/badges/e14a2647843de209fd5e/maintainability)](https://codeclimate.com/github/edonosotti/ci-cd-tutorial-sample-app/maintainability)
-
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Sahay-ohikc_ci-cd-tutorial-sample-app&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Sahay-ohikc_ci-cd-tutorial-sample-app)
 # CD/CI Tutorial Sample Application
 
 ## Description
